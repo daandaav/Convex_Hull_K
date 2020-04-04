@@ -37,7 +37,7 @@ impl Triangle {
 		else
 			step = abs(dy);
 
-		for (let i=0; i <= step) {
+		for let i=0 && i <= step {
 			x += dx;
 			y += dy;
 			i++;
@@ -102,14 +102,28 @@ impl convexhull {
 		return merge(px, py);
 	}
 
-	fn cvexhullk(&self) {//convexhull with nearest-k neighbours
+	fn knear(&self) {//convexhull with k-nearest neighbours
 		let P = self.P;
 		if (P.len()==1)
 			return P;
-	
-		halfsectx = cvexhullk(P[0; P.len()/2]);
-		halfsecty = cvexhullk(P[P.len()/2;]);
 
+		let K[u32; 3] = [0; 3];
+		
+		let i = 0;
+		for i in K.iter() {//follows DDA
+			while (i <= 3) {
+				return i = 0;
+
+				if (i == 3)
+					return K[i];
+				else if (i >= 3)
+			}
+		}
+	
+		halfsectx = knear(P[0; P.len()/2]);
+		halfsecty = knear(P[P.len()/2;]);
+		/*Find the lowest y-value, -> find subsequent points; by going around.
+		Thus following Jarvis March's Gift Wrapping Algorithm*/
 		return merge(halfsect_x, halfsect_y);
 	}
 }
