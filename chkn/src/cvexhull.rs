@@ -17,7 +17,7 @@ slowHull(P)
 	Points not marks as internal are on convex hull.
 	These angles (in degrees) range from -90 to 90.
 */
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Copy)]
 struct Triangle {
 	x: f32,
 	y: f32,
@@ -32,10 +32,8 @@ impl Triangle {
 		let dx = (x2 - x1);
 		let dy = (y2 - y1);
 
-		if (dx.abs()>=dy.abs())
-			step = abs(dx);
-		else
-			step = abs(dy);
+		if dx.abs()>=dy.abs() {step = abs(dx);}
+		else {step = abs(dy);}
 
 		for let i=0 && i <= step {
 			x += dx;
@@ -104,8 +102,7 @@ impl convexhull {
 
 	fn knear(&self) {//convexhull with k-nearest neighbours
 		let P = self.P;
-		if (P.len()==1)
-			return P;
+		if P.len()==1 {return P;}
 
 		let K[u32; 3] = [0; 3];
 		
